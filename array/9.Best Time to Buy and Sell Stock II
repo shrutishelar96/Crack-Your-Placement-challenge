@@ -1,0 +1,28 @@
+class Solution {
+public:
+int solve(vector<int>& prices,int maxprofit,vector<int>&dp){
+    int n=prices.size();
+    int profit=prices[0];
+   
+    for(int i=1;i<=n;i++){
+        if(prices[i]>profit){
+  maxprofit+=prices[i]-prices[i-1];
+        }else{
+            profit++;
+        }
+    }
+    dp[maxprofit]=maxprofit;
+    return dp[maxprofit];
+    
+
+
+}
+    int maxProfit(vector<int>& prices) {
+            
+         int maxprofit=0;
+        int n=prices.size();
+        vector<int>dp(n+1,-1);
+        int ans=solve(prices,maxprofit,dp);
+        return ans;
+    }
+};
